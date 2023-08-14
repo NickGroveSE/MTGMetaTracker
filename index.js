@@ -2,8 +2,8 @@ const parse5 = require('parse5')
 const axios = require('axios')
 
 async function performScraping() {
-    // downloading the target web page
-    // by performing an HTTP GET request in Axios
+
+    // Download Mtggoldfish using Axios (Currently just getting Pioneer)
     const axiosResponse = await axios.request({
         method: "GET",
         url: "https://www.mtggoldfish.com/metagame/pioneer#paper",
@@ -14,10 +14,14 @@ async function performScraping() {
         
     })
 
+    // Remove Newlines and Parse
     const document = parse5.parse(axiosResponse.data.replace(/\n/gm, ""))
 
+    // Retrieve Archetypes
     const archetypes = generateArchetypes(document)
 
+    // Loop Through All Archetypes
+    // Print Archetype Name, Meta %, and Price
     for (let i = 0; i < archetypes.childNodes.length; i++) {
         console.log(locateArchetypeName(archetypes, i))
         console.group()
@@ -28,8 +32,10 @@ async function performScraping() {
 
 }
 
+// Call of our Get Request Function
 performScraping()
 
+// Traverse to Archetypes
 function generateArchetypes(doc) {
     return doc.childNodes[1]
         .childNodes[1]
@@ -40,6 +46,7 @@ function generateArchetypes(doc) {
         .childNodes[1]
 }
 
+// Traverse to Archetype Name
 function locateArchetypeName(archetypes, position) {
 
     return archetypes.childNodes[position]
@@ -52,6 +59,7 @@ function locateArchetypeName(archetypes, position) {
 
 }
 
+// Traverse to Archetype Meta Percentage
 function locateArchetypeMetaPercentage(archetypes, position) {
 
     return archetypes.childNodes[position]
@@ -64,6 +72,7 @@ function locateArchetypeMetaPercentage(archetypes, position) {
 
 }
 
+// Traverse to Archetype Price
 function locateArchetypePrice(archetypes, position) {
 
     return archetypes.childNodes[position]
@@ -75,18 +84,4 @@ function locateArchetypePrice(archetypes, position) {
         .childNodes[0].value
 
 }
-// const document = parse5.parse('<!DOCTYPE html><html><head></head><body><div id="me"><div id="u">Hello</div></div></body></html>')
-
-// console.log(dig(document.childNodes[1].childNodes[1], 2).childNodes[0].value)
-
-// function dig(doc, deepness) {
-
-//     if(deepness == 1){
-//         return doc.childNodes[0]
-//     } else {
-//         deepness--
-//         return dig(doc.childNodes[0], deepness)
-//     }
-
-// }
 
