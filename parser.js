@@ -25,14 +25,14 @@ async function performScraping() {
     for (let i = 0; i < archetypes.childNodes.length; i++) {
         console.log(locateArchetypeName(archetypes, i))
         console.group()
-        console.log("Meta %:            " + locateArchetypeMetaPercentage(archetypes, i))
+        console.log("Meta %:           " + locateArchetypeMetaPercentage(archetypes, i))
         console.log("Tabletop Price:  " + locateArchetypePrice(archetypes, i) + "\n")
         console.groupEnd()
     }
 
 }
 
-// Call of our Get Request Function
+// Calling our Get Request Function
 performScraping()
 
 // Traverse to Archetypes
