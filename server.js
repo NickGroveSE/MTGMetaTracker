@@ -12,6 +12,12 @@ app.set('layout', 'layouts/layout')
 app.use(expressLayouts)
 app.use(express.static('public'))
 
+const mongoose = require('mongoose')
+mongoose.connect('mongodb://0.0.0.0:27017/mtgmetatracker', { useNewUrlParser: true })
+const db = mongoose.connection
+db.on('error', error => console.error(error))
+db.once('open', () => console.log("Database Connected"))
+
 app.use('/', indexRouter)
 app.use('/about', aboutRouter)
 app.use('/contact', contactRouter)
