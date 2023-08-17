@@ -1,14 +1,28 @@
+@import 'shared/fonts.css';
+
+h1 {
+    font-family: 'LuloCleanW01-OneBold';
+    font-size: 30px;
+}
+
+p {
+    font-family: 'Futura';
+    font-size: 15px;
+}
+
 ul {
+    font-family: 'LuloCleanW01-OneBold';
+    font-size: 20px;
     list-style-type: none;
     margin: 0;
     padding: 0;
-  } 
-  
-  li a {
-    background-color: #dddddd;
-  }
+} 
 
-  li {
+li a {
+    background-color: #dddddd;
+}
+
+li {
     display: inline;
     text-align: center;
-  }
+}

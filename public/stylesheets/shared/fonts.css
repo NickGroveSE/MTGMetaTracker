@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Monoton';
+    src: url('../fonts/Monoton-Regular.woff2') format('woff2'),
+        url('../fonts/Monoton-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Futura';
+    src: url('../fonts/Futura-Bold.woff2') format('woff2'),
+        url('../fonts/Futura-Bold.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'LuloCleanW01-OneBold';
+    src: url('../fonts/LuloCleanW01-OneBold.woff2') format('woff2'),
+        url('../fonts/LuloCleanW01-OneBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
