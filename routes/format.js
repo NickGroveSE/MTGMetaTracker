@@ -5,4 +5,16 @@ router.get('/', (req, res) => {
     res.render('format/index')
 })
 
+router.get('/pioneer', (req, res) => {
+    res.render('format/pioneer')
+})
+
+router.get('/modern', (req, res) => {
+    res.render('format/modern')
+})
+
+router.get('/pauper', (req, res) => {
+    res.render('format/pauper')
+})
+
 module.exports = router
