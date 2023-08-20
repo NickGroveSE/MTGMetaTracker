@@ -1,25 +1,36 @@
 class DataPoint {
 
-    constructor(year, month, day, meta, price) {
-        this.date = new Date(concatenate(year, month, day))
+    constructor(date, meta, price) {
+        this.date = date
         this.meta = meta
         this.price = price
     }
 
+    set date(d) {
+        this._date = d
+    }
+
+    set meta(m) {
+        this._meta = m
+    }
+
+    set price(p) {
+        this._price = p
+    }
+
     get date() {
-        return date
+        return this._date
     }
 
     get meta() {
-        return meta
+        return this._meta
     }
 
     get price() {
-        return price
-    }
-
-    static concatenate(year, month, day) {
-        return year.concat("-", month.concat("-", day))
+        return this._price
     }
 
 }
+
+module.exports = DataPoint
+

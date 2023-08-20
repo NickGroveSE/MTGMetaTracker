@@ -1,8 +1,10 @@
 const mongoose = require('mongoose')
-const queue = require('../utilities/data-point')
+var DataPoint = require('../utilities/data-point')
 
 const archetypeSchema = new mongoose.Schema({
     name: String,
     format: String,
     data: [{DataPoint}]
 })
+
+const ArchetypeModel = mongoose.model('Archetype', archetypeSchema)
