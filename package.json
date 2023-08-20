@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "parserTesting": "node parser.js",
+    "parserTesting": "node utilities/parser.js",
     "start": "node server.js",
     "devStart": "nodemon server.js"
   },

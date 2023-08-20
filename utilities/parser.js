@@ -16,22 +16,30 @@ async function performScraping() {
     const document = parse5.parse(axiosResponse.data.replace(/\n/gm, ""))
 
     // Retrieve Archetypes
-    const archetypes = generateArchetypes(document)
+    const archetypeElement = generateArchetypes(document)
+    var archetypes = []
 
     // Loop Through All Archetypes
     // Print Archetype Name, Meta %, and Price
-    for (let i = 0; i < archetypes.childNodes.length; i++) {
-        console.log(locateArchetypeName(archetypes, i))
-        console.group()
-        console.log("Meta %:           " + locateArchetypeMetaPercentage(archetypes, i))
-        console.log("Tabletop Price:  " + locateArchetypePrice(archetypes, i) + "\n")
-        console.groupEnd()
+    for (let i = 0; i < archetypeElement.childNodes.length; i++) {
+        archetypes[i] = locateArchetypeName(archetypeElement, i)
+        // console.log(locateArchetypeName(archetypes, i))
+        // console.group()
+        // console.log("Meta %:           " + locateArchetypeMetaPercentage(archetypes, i))
+        // console.log("Tabletop Price:  " + locateArchetypePrice(archetypes, i) + "\n")
+        // console.groupEnd()
     }
+
+    return archetypes
 
 }
 
+(async () => {
+    console.log(await performScraping())
+ })()
+
 // Calling our Get Request Function
-// performScraping()
+performScraping()
 
 
 // Traverse to Archetypes
