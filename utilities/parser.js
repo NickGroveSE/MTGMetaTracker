@@ -23,7 +23,12 @@ async function performScraping() {
     // Loop Through All Archetypes
     // Print Archetype Name, Meta %, and Price
     for (let i = 0; i < archetypeElement.childNodes.length; i++) {
-        var dataPoint = new DataPoint(new Date(), locateArchetypeMetaPercentage(archetypeElement, i), locateArchetypePrice(archetypeElement, i))
+        // console.log(locateArchetypePrice(archetypeElement, i).replace('$', ''))
+        var dataPoint = new DataPoint(
+            new Date(), 
+            parseFloat(locateArchetypeMetaPercentage(archetypeElement, i).value.replace('%', '')), 
+            parseInt(locateArchetypePrice(archetypeElement, i).replace('$', ''))
+        )
         var instance = new ArchetypeModel({
             name: locateArchetypeName(archetypeElement, i), 
             format: "Pioneer", 
@@ -75,7 +80,7 @@ function locateArchetypeMetaPercentage(archetypes, position) {
         .childNodes[0]
         .childNodes[0]
         .childNodes[1]
-        .childNodes[0].value
+        .childNodes[0]
 
 }
 

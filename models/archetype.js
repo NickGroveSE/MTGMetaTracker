@@ -5,8 +5,8 @@ const archetypeSchema = new mongoose.Schema({
     format: String,
     data: [{
         date: String,
-        meta: String,
-        price: String
+        meta: Number,
+        price: Number
     }]
 })
 
