@@ -10,8 +10,6 @@ async function performScraping() {
         headers: {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
         }
-
-        
     })
 
     // Remove Newlines and Parse
@@ -33,7 +31,8 @@ async function performScraping() {
 }
 
 // Calling our Get Request Function
-performScraping()
+// performScraping()
+
 
 // Traverse to Archetypes
 function generateArchetypes(doc) {
@@ -85,3 +84,4 @@ function locateArchetypePrice(archetypes, position) {
 
 }
 
+module.exports = performScraping()

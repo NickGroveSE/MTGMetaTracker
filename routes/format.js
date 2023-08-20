@@ -6,6 +6,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/pioneer', (req, res) => {
+    require('../utilities/parser')
     res.render('format/pioneer')
 })
 

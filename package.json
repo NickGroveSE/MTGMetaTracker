@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "parserTesting": "node parser.js",
     "start": "node server.js",
     "devStart": "nodemon server.js"
   },
@@ -22,6 +23,7 @@
     "nodemon": "^3.0.1",
     "parse5": "^7.1.2",
     "pretty": "^2.0.0",
+    "prompt-sync": "^4.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
