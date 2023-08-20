@@ -1,7 +1,7 @@
 const parse5 = require('parse5')
 const axios = require('axios')
 var DataPoint = require('./data-point.js')
-// const ArchetypeModel = require('../models/archetype')
+const ArchetypeModel = require('../models/archetype')
 
 async function performScraping() {
 
@@ -19,14 +19,20 @@ async function performScraping() {
 
     // Retrieve Archetypes
     const archetypeElement = generateArchetypes(document)
-    var archetypes = []
 
     // Loop Through All Archetypes
     // Print Archetype Name, Meta %, and Price
     for (let i = 0; i < archetypeElement.childNodes.length; i++) {
         var dataPoint = new DataPoint(new Date(), locateArchetypeMetaPercentage(archetypeElement, i), locateArchetypePrice(archetypeElement, i))
-        console.log(dataPoint)
-        //var instance = new archetype_model
+        var instance = new ArchetypeModel({
+            name: locateArchetypeName(archetypeElement, i), 
+            format: "Pioneer", 
+            data: [{
+                date: dataPoint.date, 
+                meta: dataPoint.meta, 
+                price: dataPoint.price}]
+        })
+        console.log(instance)
     }
 
 
@@ -35,10 +41,6 @@ async function performScraping() {
 (async () => {
     await performScraping()
 })()
-
-// Calling our Get Request Function
-performScraping()
-
 
 // Traverse to Archetypes
 function generateArchetypes(doc) {

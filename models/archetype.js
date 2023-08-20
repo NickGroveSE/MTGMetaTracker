@@ -1,10 +1,13 @@
 const mongoose = require('mongoose')
-var DataPoint = require('../utilities/data-point')
 
 const archetypeSchema = new mongoose.Schema({
     name: String,
     format: String,
-    data: [{DataPoint}]
+    data: [{
+        date: String,
+        meta: String,
+        price: String
+    }]
 })
 
-const ArchetypeModel = mongoose.model('Archetype', archetypeSchema)
+module.exports = mongoose.model("Archetype", archetypeSchema)
