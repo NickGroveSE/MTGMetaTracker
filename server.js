@@ -25,3 +25,7 @@ app.use('/contact', contactRouter)
 app.use('/format', formatRouter)
 
 app.listen(process.env.PORT || 3000)
+
+// (async () => {
+//     await require('./utilities/parser')
+// })()
