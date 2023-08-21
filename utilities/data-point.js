@@ -1,3 +1,7 @@
+/**
+ * The DataPoint Class is used to keep all of our data for an archetype as certain point in time together.
+ * This Class will be used mostly for data visualization, and to cleanly create add data to our Archetype Models
+ */
 class DataPoint {
 
     constructor(date, meta, price) {
