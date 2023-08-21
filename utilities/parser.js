@@ -7,7 +7,12 @@ const formats = ["pioneer" , "modern", "pauper"]
 // Web Scraping Function
 async function performScraping() {
 
+    console.log("Beginning Weekly Updating of Archetypes.....")
+
     for (let i = 0; i < formats.length; i++) {
+
+        var currentFormat = formats[i].charAt(0).toUpperCase() + formats[i].slice(1)
+        console.log("Updating " + currentFormat)
 
     // Download Mtggoldfish using Axios (Currently just getting Pioneer)
         const axiosResponse = await axios.request({
@@ -47,11 +52,19 @@ async function performScraping() {
             })
 
             // Print First Archetype of Each Format for Testing
-            console.log(instance)
+            // console.log(instance)
         }
 
     }
 
+    console.log("Done")
+
+}
+
+function parse() {
+    (async () => {
+        await performScraping()
+    })()
 }
 
 // Traverse to Archetypes
@@ -104,4 +117,4 @@ function locateArchetypePrice(archetypes, position) {
 
 }
 
-module.exports = performScraping()
+module.exports = { parse }

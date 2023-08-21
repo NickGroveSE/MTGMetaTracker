@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
+const parser = require('./utilities/parser')
+const node_cron = require("node-cron")
 
 const indexRouter = require('./routes/index')
 const aboutRouter = require('./routes/about')
@@ -24,8 +26,8 @@ app.use('/about', aboutRouter)
 app.use('/contact', contactRouter)
 app.use('/format', formatRouter)
 
-app.listen(process.env.PORT || 3000)
+const job = node_cron.schedule(" 0 50 23 * * Sunday", () => {
+    parser.parse();
+});
 
-// (async () => {
-//     await require('./utilities/parser')
-// })()
+app.listen(process.env.PORT || 3000)
