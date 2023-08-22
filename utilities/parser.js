@@ -1,7 +1,7 @@
 const parse5 = require('parse5')
 const axios = require('axios')
 var DataPoint = require('./data-point.js')
-const ArchetypeModel = require('../models/archetype')
+const Archetype = require('../models/archetype')
 const formats = ["pioneer" , "modern", "pauper"]
 
 // Web Scraping Function
@@ -33,6 +33,8 @@ async function performScraping() {
         // Print Archetype Name, Meta %, and Price
         for (let j = 0; j < archetypeElement.childNodes.length; j++) {
 
+            const isInstanceSaved = await Archetype.find(({name: {'$regex': locateArchetypeName(archetypeElement, j)}}))
+
             // Initialize DataPoint
             var dataPoint = new DataPoint(
                 new Date(), 
@@ -40,19 +42,59 @@ async function performScraping() {
                 parseInt(locateArchetypePrice(archetypeElement, j).replace('$', ''))
             )
 
-            // Create Instance of Archetype Model
-            var instance = new ArchetypeModel({
-                name: locateArchetypeName(archetypeElement, j), 
-                format: currentFormat, 
-                data: [{
-                    date: dataPoint.date, 
-                    meta: dataPoint.meta, 
-                    price: dataPoint.price
-                }]
-            })
+            if (isInstanceSaved.length == 0) {
 
-            // Save Data
-            instance.save()
+                console.log("1")
+                console.log(isInstanceSaved)
+
+                var instance = new Archetype({
+                    name: locateArchetypeName(archetypeElement, j), 
+                    format: currentFormat, 
+                    data: [{
+                        date: dataPoint.date, 
+                        meta: dataPoint.meta, 
+                        price: dataPoint.price
+                    }]
+                })
+
+                instance.save()
+
+            } else {
+
+                console.log("2")
+                console.log(isInstanceSaved)
+
+                Archetype.updateOne(
+                    {name: isInstanceSaved.name},
+                    {'$push': {data: [{
+                        date: dataPoint.date,
+                        meta: dataPoint.meta,
+                        price: dataPoint.price
+                    }]}}
+                )
+
+            }
+
+            // Create Instance of Archetype Model
+
+            // if (await Archetype.find({name: fakeName})) {
+            //     console.log("Yes")
+            // }
+            
+            
+            // if (Archetype.findOne({name: Data}))
+            // var instance = new Archetype({
+            //     name: locateArchetypeName(archetypeElement, j), 
+            //     format: currentFormat, 
+            //     data: [{
+            //         date: dataPoint.date, 
+            //         meta: dataPoint.meta, 
+            //         price: dataPoint.price
+            //     }]
+            // })
+
+            // // Save Data
+            // instance.save()
 
         }
     }
