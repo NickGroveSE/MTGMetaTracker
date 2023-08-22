@@ -14,7 +14,7 @@ async function performScraping() {
         var currentFormat = formats[i].charAt(0).toUpperCase() + formats[i].slice(1)
         console.log("Updating " + currentFormat)
 
-    // Download Mtggoldfish using Axios (Currently just getting Pioneer)
+        // Download Mtggoldfish using Axios (Currently just getting Pioneer)
         const axiosResponse = await axios.request({
             method: "GET",
             url: `https://www.mtggoldfish.com/metagame/${formats[i]}#paper`,
@@ -43,7 +43,7 @@ async function performScraping() {
             // Create Instance of Archetype Model
             var instance = new ArchetypeModel({
                 name: locateArchetypeName(archetypeElement, j), 
-                format: formats[i].charAt(0).toUpperCase() + formats[i].slice(1), 
+                format: currentFormat, 
                 data: [{
                     date: dataPoint.date, 
                     meta: dataPoint.meta, 
@@ -51,10 +51,10 @@ async function performScraping() {
                 }]
             })
 
-            // Print First Archetype of Each Format for Testing
-            // console.log(instance)
-        }
+            // Save Data
+            instance.save()
 
+        }
     }
 
     console.log("Done")

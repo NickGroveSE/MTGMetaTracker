@@ -30,9 +30,15 @@ app.use('/about', aboutRouter)
 app.use('/contact', contactRouter)
 app.use('/format', formatRouter)
 
-// Schedule Weekly Web Scraping
-const job = node_cron.schedule(" 0 0 0 * * Monday", () => {
-    parser.parse();
-});
+var currently = "no"
+
+if (currently == "live") {
+    // Schedule Weekly Web Scraping
+    const job = node_cron.schedule(" 0 0 0 * * Monday", () => {
+        parser.parse()
+    });
+} else if (currently == "test") {
+    parser.parse()
+}
 
 app.listen(process.env.PORT || 3000)
