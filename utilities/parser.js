@@ -58,9 +58,18 @@ async function performScraping() {
 
                 instance.save()
 
+                console.log(instance)
+
             } else {
 
-                const test = await Archetype.updateOne({'name': isInstanceSaved[0].name, 'format': currentFormat},{'$push': {'data': [{'date': 'test', 'meta': 1, 'price': 1}]}}, {upsert: true})
+                const updateResponse = await Archetype.updateOne(
+                    {'name': isInstanceSaved[0].name, 'format': currentFormat},
+                    {'$push': {'data': [{
+                        'date': dataPoint.date, 
+                        'meta': dataPoint.meta, 
+                        'price': dataPoint.price
+                    }]},
+                }, {upsert: true})
 
                 // 64e52dd5c94bddd7883d8afa
                 console.log(isInstanceSaved[0])
