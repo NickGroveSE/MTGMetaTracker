@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
-const parser = require('./utilities/parser')
+const scraper = require('./utilities/scraper')
 const node_cron = require("node-cron")
 
 // Initializing Routers
@@ -30,15 +30,15 @@ app.use('/about', aboutRouter)
 app.use('/contact', contactRouter)
 app.use('/format', formatRouter)
 
-var currently = "test"
+var currently = "scrapetest"
 
 if (currently == "live") {
     // Schedule Weekly Web Scraping
     const job = node_cron.schedule(" 0 0 0 * * Monday", () => {
-        parser.parse()
+        scraper.scrape()
     });
-} else if (currently == "test") {
-    parser.parse()
-}
+} else if (currently == "scrapetest") {
+    scraper.scrape()
+} else if (currently == "frontend")
 
 app.listen(process.env.PORT || 3000)
