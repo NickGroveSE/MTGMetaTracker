@@ -33,7 +33,7 @@ async function performScraping() {
         // Print Archetype Name, Meta %, and Price
         for (let j = 0; j < archetypeElement.childNodes.length; j++) {
 
-            const isInstanceSaved = await Archetype.find(({name: {'$regex': locateArchetypeName(archetypeElement, j)}}))
+            const isInstanceSaved = await Archetype.find(({name: {$regex: locateArchetypeName(archetypeElement, j)}, format: {$regex: currentFormat}}))
 
             // Initialize DataPoint
             var dataPoint = new DataPoint(
@@ -44,8 +44,7 @@ async function performScraping() {
 
             if (isInstanceSaved.length == 0) {
 
-                console.log("1")
-                console.log(isInstanceSaved)
+                // console.log(isInstanceSaved[0].name)
 
                 var instance = new Archetype({
                     name: locateArchetypeName(archetypeElement, j), 
@@ -61,17 +60,10 @@ async function performScraping() {
 
             } else {
 
-                console.log("2")
-                console.log(isInstanceSaved)
+                const test = await Archetype.updateOne({'name': isInstanceSaved[0].name, 'format': currentFormat},{'$push': {'data': [{'date': 'test', 'meta': 1, 'price': 1}]}}, {upsert: true})
 
-                Archetype.updateOne(
-                    {name: isInstanceSaved.name},
-                    {'$push': {data: [{
-                        date: dataPoint.date,
-                        meta: dataPoint.meta,
-                        price: dataPoint.price
-                    }]}}
-                )
+                // 64e52dd5c94bddd7883d8afa
+                console.log(isInstanceSaved[0])
 
             }
 
