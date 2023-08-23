@@ -2,7 +2,8 @@ const express = require('express')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const scraper = require('./utilities/scraper')
-const node_cron = require("node-cron")
+const node_cron = require('node-cron')
+const bodyParser = require('body-parser')
 
 // Initializing Routers
 const indexRouter = require('./routes/index')
@@ -16,6 +17,7 @@ app.set('views', __dirname + '/views')
 app.set('layout', 'layouts/layout')
 app.use(expressLayouts)
 app.use(express.static('public'))
+app.use(bodyParser.urlencoded({extended: true}))
 
 // MongoDB Setup
 const mongoose = require('mongoose')
@@ -30,7 +32,7 @@ app.use('/about', aboutRouter)
 app.use('/contact', contactRouter)
 app.use('/format', formatRouter)
 
-var currently = "scrapetest"
+var currently = "frontend"
 
 if (currently == "live") {
     // Schedule Weekly Web Scraping

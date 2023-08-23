@@ -1,3 +1,4 @@
 <% for (let i = 0; i < archetypes.length; i++) { %>
-    <div><%= archetypes[i].name %></div>
+    <a href="/format/<%= archetypes[i].format.charAt(0).toLowerCase() + archetypes[i].format.slice(1) %>/<%= archetypes[i].id %>"><%= archetypes[i].name %></a>
+    <br>
 <% } %>

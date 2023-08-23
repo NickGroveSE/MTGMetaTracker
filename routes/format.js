@@ -6,30 +6,24 @@ router.get('/', (req, res) => {
     res.render('format/index')
 })
 
-router.get('/pioneer', async (req, res) => {
+router.get('/:format', async (req,res) =>{
+    const formatUpper = req.params.format.charAt(0).toUpperCase() + req.params.format.slice(1)
     try {
-        const archetypes = await Archetype.find({format: "Pioneer"})
-        res.render('format/pioneer', {archetypes: archetypes})
-    } catch {
+        const archetypes = await Archetype.find({format: formatUpper})
+        res.render(`format/${req.params.format}`, {archetypes: archetypes})
+    } catch (err) {
         res.redirect('/')
     }
 })
 
-router.get('/modern', async (req, res) => {
-    try {
-        const archetypes = await Archetype.find({format: "Modern"})
-        res.render('format/modern', {archetypes: archetypes})
-    } catch {
-        res.redirect('/')
-    }
-})
+router.get('/:format/:id', async (req, res) => {
 
-router.get('/pauper', async (req, res) => {
+    let archetype
     try {
-        const archetypes = await Archetype.find({format: "Pauper"})
-        res.render('format/pauper', {archetypes: archetypes})
+        archetype = await Archetype.findById(req.params.id)
+        res.render(`format/${req.params.format}/show`)
     } catch {
-        res.redirect('/')
+
     }
 })
 
