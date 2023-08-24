@@ -1,0 +1,44 @@
+<div id="line-graph"></div>
+<script type="text/javascript">
+    const width = 928
+    const height = 500
+    const marginTop = 20
+    const marginRight = 30
+    const marginBottom = 30
+    const marginLeft = 40
+
+    var svg = d3.select("#line-graph")
+        .append("svg")
+        .attr("width", width + marginLeft + marginRight)
+        .attr("height", height + marginTop + marginBottom)  
+
+    var x = d3.scaleTime()
+      .domain([new Date("2023-01-01"), new Date("2024-01-01")])
+      .range([ 0, width ])
+
+    svg.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+
+    var y = d3.scaleLinear()
+      .domain([0, 100])
+      .range([ height, 0 ])
+
+    svg.append("g")
+      .call(d3.axisLeft(y));
+
+
+    // var graphic = d3.select("#circle")
+    //     .append("svg")
+    //     .attr("width", 500)
+    //     .attr("height", 500)
+
+    // graphic.append("circle")
+    //     .style("stroke", "blue")
+    //     .style("fill", "red")
+    //     .attr("r", 100)
+    //     .attr("cx", 300)
+    //     .attr("cy", 100)
+    //     .on("mouseover", function(){d3.select(this).style("fill", "lavender")})
+    //     .on("mouseout", function(){d3.select(this).style("fill", "red")})
+</script>
