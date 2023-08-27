@@ -1,31 +1,42 @@
 <div id="line-graph"></div>
+<div><%= Math.max(...archetype.data.map((value) => value.meta)) %></div>
 <script type="text/javascript">
-    const width = 928
-    const height = 500
-    const marginTop = 20
-    const marginRight = 30
-    const marginBottom = 30
-    const marginLeft = 40
 
-    var svg = d3.select("#line-graph")
-        .append("svg")
-        .attr("width", width + marginLeft + marginRight)
-        .attr("height", height + marginTop + marginBottom)  
-        .append("g")
-        .attr("transform", `translate(${marginLeft},${marginTop})`)
+  const endDate = new Date("<%= archetype.data[archetype.data.length - 1].date.slice(0,12) %>")
+  const startDate = new Date(endDate)
+  startDate.setFullYear(startDate.getFullYear() - 1)
+  const xRange = [startDate, endDate]
 
-    var x = d3.scaleTime()
-      .domain([new Date("2023-01-01"), new Date("2024-01-01")])
-      .range([ 0, width ])
+  const metaMax = "<%= Math.max(...archetype.data.map((value) => value.meta))/100 %>"
+  const yMetaRange = [0,metaMax]
 
-    svg.append("g")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x))
+  const width = 928
+  const height = 500
+  const marginTop = 20
+  const marginRight = 30
+  const marginBottom = 30
+  const marginLeft = 40
 
-    var y = d3.scaleLinear()
-      .domain([0, 1])
-      .range([ height, 0 ])
+  var svg = d3.select("#line-graph")
+    .append("svg")
+    .attr("width", width + marginLeft + marginRight)
+    .attr("height", height + marginTop + marginBottom)  
+    .append("g")
+    .attr("transform", `translate(${marginLeft},${marginTop})`)
 
-    svg.append("g")
-      .call(d3.axisLeft(y).tickFormat(d3.format('.0%')))
+  var x = d3.scaleTime()
+    .domain(xRange)
+    .range([ 0, width ])
+
+  svg.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x))
+
+  var y = d3.scaleLinear()
+    .domain(yMetaRange)
+    .range([ height, 0 ])
+
+  svg.append("g")
+    .call(d3.axisLeft(y).tickFormat(d3.format('.0%')))
+
 </script>
