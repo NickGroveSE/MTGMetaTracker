@@ -15,17 +15,18 @@
 
   dataSet.push({
     date: new Date("2024-01-01"),
-    meta: 0.3
+    meta: 0.2
   })
 
   console.log(dataSet)
   console.log(dates)
   console.log(metas)
 
-  const endDate = new Date("2024-01-01")
+  const endDate = dataSet[dataSet.length-1].date
   const startDate = new Date(endDate)
   startDate.setFullYear(startDate.getFullYear() - 1)
   const xRange = [startDate, endDate]
+
 
   const yMetaRange = [0,0.3]
 
@@ -58,7 +59,7 @@
     .range([ height, 0 ])
 
   svg.append("g")
-    .call(d3.axisLeft(y))
+    .call(d3.axisLeft(y).tickFormat(d3.format('.0%')))
 
   const line = d3.line()
     .x(d => x(d.date))
