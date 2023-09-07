@@ -1,0 +1,70 @@
+<div id="meta-graph"></div>
+ 
+<script type="text/javascript">
+
+  var dataSet = []
+  var dates = "<%-data.map((value) => value.date)%>".split(',')
+  var metas = "<%-data.map((value) => value.meta)%>".split(',').map((value) => Number(value))
+
+  for (let i = 0; i < dates.length; i++) {
+    dataSet.push({
+      date: new Date(dates[i]),
+      meta: metas[i]/100
+    })
+  }
+
+  dataSet.push({
+    date: new Date("2024-01-01"),
+    meta: 0.15
+  })
+
+  const endDate = dataSet[dataSet.length-1].date
+  const startDate = new Date(endDate)
+  startDate.setFullYear(startDate.getFullYear() - 1)
+  const xRange = [startDate, endDate]
+
+  const metaMax = Math.max(...metas)/100 + 0.02
+  var yMetaRange = [0,metaMax]
+
+  const width = 928
+  const height = 500
+  const marginTop = 20
+  const marginRight = 30
+  const marginBottom = 30
+  const marginLeft = 40
+
+  var svg = d3.select("#meta-graph")
+    .append("svg")
+    .attr("width", width + marginLeft + marginRight)
+    .attr("height", height + marginTop + marginBottom)  
+    .append("g")
+    .attr("transform", `translate(${marginLeft},${marginTop})`)
+
+  var x = d3.scaleTime()
+    .domain(xRange)
+    .range([ 0, width ])
+
+  svg.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x)
+    .ticks(d3.timeMonth.every(1))
+    .tickFormat(d3.timeFormat("%b %Y")))
+
+  var y = d3.scaleLinear()
+    .domain(yMetaRange)
+    .range([ height, 0 ])
+
+  svg.append("g")
+    .call(d3.axisLeft(y).tickFormat(d3.format('.0%')))
+
+  var line = d3.line()
+    .x(d => x(d.date))
+    .y(d => y(d.meta))
+
+  svg.append("path")
+    .datum(dataSet)
+    .attr("fill", "none")
+    .attr("stroke", "steelblue")
+    .attr("stroke-width", 1)
+    .attr("d", line)
+</script>

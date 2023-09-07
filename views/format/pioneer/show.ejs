@@ -1,1 +1,15 @@
-<%- include('../../partials/graph.ejs') %>
+<div class="tabs-container">
+    <%- include('../../partials/tab-view.ejs') %>
+
+    <div class="tab-panels">
+        <div id="meta" aria-labelledby="tab-1">
+            <%- include('../../partials/meta-graph.ejs') %>
+        </div>
+
+        <div id="price" aria-labelledby="tab-2">
+            <%- include('../../partials/price-graph.ejs') %>
+        </div>
+    </div>
+</div>
+
+

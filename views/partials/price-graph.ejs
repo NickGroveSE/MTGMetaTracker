@@ -1,46 +1,34 @@
-<div id="meta-graph"></div>
+<div id="price-graph"></div>
  
 <script type="text/javascript">
 
-  var dataSet = []
-  var dates = "<%-data.map((value) => value.date)%>".split(',')
-  var metas = "<%-data.map((value) => value.meta)%>".split(',').map((value) => Number(value))
+  dataSet = []
+  dates = "<%-data.map((value) => value.date)%>".split(',')
+  var prices = "<%-data.map((value) => value.price)%>".split(',').map((value) => Number(value))
 
   for (let i = 0; i < dates.length; i++) {
     dataSet.push({
       date: new Date(dates[i]),
-      meta: metas[i]/100
+      price: prices[i]
     })
   }
 
   dataSet.push({
     date: new Date("2024-01-01"),
-    meta: 0.15
+    price: 300
   })
 
-  const endDate = dataSet[dataSet.length-1].date
-  const startDate = new Date(endDate)
-  startDate.setFullYear(startDate.getFullYear() - 1)
-  const xRange = [startDate, endDate]
+  const priceMax = Math.max(...prices) + 20
+  yMetaRange = [0,priceMax]
 
-  const metaMax = Math.max(...metas)/100 + 0.02
-  const yMetaRange = [0,metaMax]
-
-  const width = 928
-  const height = 500
-  const marginTop = 20
-  const marginRight = 30
-  const marginBottom = 30
-  const marginLeft = 40
-
-  var svg = d3.select("#meta-graph")
+  svg = d3.select("#price-graph")
     .append("svg")
     .attr("width", width + marginLeft + marginRight)
     .attr("height", height + marginTop + marginBottom)  
     .append("g")
     .attr("transform", `translate(${marginLeft},${marginTop})`)
 
-  var x = d3.scaleTime()
+  x = d3.scaleTime()
     .domain(xRange)
     .range([ 0, width ])
 
@@ -50,16 +38,16 @@
     .ticks(d3.timeMonth.every(1))
     .tickFormat(d3.timeFormat("%b %Y")))
 
-  var y = d3.scaleLinear()
+  y = d3.scaleLinear()
     .domain(yMetaRange)
     .range([ height, 0 ])
 
   svg.append("g")
-    .call(d3.axisLeft(y).tickFormat(d3.format('.0%')))
+    .call(d3.axisLeft(y))
 
-  const line = d3.line()
+  line = d3.line()
     .x(d => x(d.date))
-    .y(d => y(d.meta))
+    .y(d => y(d.price))
 
   svg.append("path")
     .datum(dataSet)
