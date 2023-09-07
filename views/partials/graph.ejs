@@ -1,8 +1,21 @@
 <div id="line-graph"></div>
-<div><%= Math.max(...archetype.data.map((value) => value.meta)) %></div>
+<% const dataSet = archetype %>
+<%- typeof Array.from(dataSet.data)%>
+ 
 <script type="text/javascript">
 
-  const endDate = new Date("<%= archetype.data[archetype.data.length - 1].date.slice(0,12) %>")
+  
+  var data = <%-archetype%>
+
+  // const dataSet = [
+  //   { date: metaData.date, meta: metaData.meta},
+  //   { date: new Date("2023-06-01"), meta: 0.2},
+  //   { date: new Date("2023-07-01"), meta: 0.3},
+
+
+  // ]
+
+  const endDate = new Date("2024-01-01")
   const startDate = new Date(endDate)
   startDate.setFullYear(startDate.getFullYear() - 1)
   const xRange = [startDate, endDate]
@@ -30,13 +43,25 @@
 
   svg.append("g")
     .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x))
+    .call(d3.axisBottom(x)
+    .ticks(d3.timeMonth.every(1))
+    .tickFormat(d3.timeFormat("%b %Y")))
 
   var y = d3.scaleLinear()
-    .domain(yMetaRange)
+    .domain([0, 20])
     .range([ height, 0 ])
 
   svg.append("g")
-    .call(d3.axisLeft(y).tickFormat(d3.format('.0%')))
+    .call(d3.axisLeft(y))
 
+  const line = d3.line()
+    .x(d => x(d.date))
+    .y(d => y(d.meta))
+
+  svg.append("path")
+    .datum(metaData)
+    .attr("fill", "none")
+    .attr("stroke", "steelblue")
+    .attr("stroke-width", 1)
+    .attr("d", line)
 </script>

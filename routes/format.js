@@ -21,6 +21,7 @@ router.get('/:format/:id', async (req, res) => {
     let archetype
     try {
         archetype = await Archetype.findById(req.params.id)
+        console.log()
         res.render(`format/${req.params.format}/show`, {archetype: archetype})
     } catch {
 
