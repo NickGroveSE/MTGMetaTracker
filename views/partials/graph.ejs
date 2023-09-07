@@ -1,27 +1,33 @@
 <div id="line-graph"></div>
-<% const dataSet = archetype %>
-<%- typeof Array.from(dataSet.data)%>
  
 <script type="text/javascript">
 
-  
-  var data = <%-archetype%>
+  var dataSet = []
+  var dates = "<%-data.map((value) => value.date)%>".split(',')
+  var metas = "<%-data.map((value) => value.meta)%>".split(',').map((value) => Number(value))
 
-  // const dataSet = [
-  //   { date: metaData.date, meta: metaData.meta},
-  //   { date: new Date("2023-06-01"), meta: 0.2},
-  //   { date: new Date("2023-07-01"), meta: 0.3},
+  for (let i = 0; i < dates.length; i++) {
+    dataSet.push({
+      date: new Date(dates[i]),
+      meta: metas[i]/100
+    })
+  }
 
+  dataSet.push({
+    date: new Date("2024-01-01"),
+    meta: 0.3
+  })
 
-  // ]
+  console.log(dataSet)
+  console.log(dates)
+  console.log(metas)
 
   const endDate = new Date("2024-01-01")
   const startDate = new Date(endDate)
   startDate.setFullYear(startDate.getFullYear() - 1)
   const xRange = [startDate, endDate]
 
-  const metaMax = "<%= Math.max(...archetype.data.map((value) => value.meta))/100 %>"
-  const yMetaRange = [0,metaMax]
+  const yMetaRange = [0,0.3]
 
   const width = 928
   const height = 500
@@ -48,7 +54,7 @@
     .tickFormat(d3.timeFormat("%b %Y")))
 
   var y = d3.scaleLinear()
-    .domain([0, 20])
+    .domain(yMetaRange)
     .range([ height, 0 ])
 
   svg.append("g")
@@ -59,7 +65,7 @@
     .y(d => y(d.meta))
 
   svg.append("path")
-    .datum(metaData)
+    .datum(dataSet)
     .attr("fill", "none")
     .attr("stroke", "steelblue")
     .attr("stroke-width", 1)

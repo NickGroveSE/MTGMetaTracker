@@ -16,15 +16,16 @@ router.get('/:format', async (req,res) =>{
     }
 })
 
-router.get('/:format/:id', async (req, res) => {
+router.get('/:format/:name', async (req, res) => {
 
     let archetype
+    const nameWithSpace = req.params.name.replace("-", " ")
     try {
-        archetype = await Archetype.findById(req.params.id)
+        archetype = await Archetype.find({name: nameWithSpace})
         console.log()
-        res.render(`format/${req.params.format}/show`, {archetype: archetype})
+        res.render(`format/${req.params.format}/show`, {data: archetype[0].data})
     } catch {
-
+        res.redirect('/')
     }
 })
 
