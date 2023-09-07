@@ -1,4 +1,4 @@
-<div id="line-graph"></div>
+<div id="meta-graph"></div>
  
 <script type="text/javascript">
 
@@ -15,20 +15,16 @@
 
   dataSet.push({
     date: new Date("2024-01-01"),
-    meta: 0.2
+    meta: 0.15
   })
-
-  console.log(dataSet)
-  console.log(dates)
-  console.log(metas)
 
   const endDate = dataSet[dataSet.length-1].date
   const startDate = new Date(endDate)
   startDate.setFullYear(startDate.getFullYear() - 1)
   const xRange = [startDate, endDate]
 
-
-  const yMetaRange = [0,0.3]
+  const metaMax = Math.max(...metas)/100 + 0.02
+  const yMetaRange = [0,metaMax]
 
   const width = 928
   const height = 500
@@ -37,7 +33,7 @@
   const marginBottom = 30
   const marginLeft = 40
 
-  var svg = d3.select("#line-graph")
+  var svg = d3.select("#meta-graph")
     .append("svg")
     .attr("width", width + marginLeft + marginRight)
     .attr("height", height + marginTop + marginBottom)  
