@@ -10,6 +10,23 @@
             <%- include('../../partials/price-graph.ejs') %>
         </div>
     </div>
+
+    <script type="text/javascript">
+        const metaPanel = document.getElementById("meta")
+        const pricePanel = document.getElementById("price")
+        pricePanel.style.display = "none"
+
+        function graphToggle(element) {
+            if ($(element).text() == "Meta") {
+                pricePanel.style.display = "none"
+                metaPanel.style.display = "block"
+            } else {
+                pricePanel.style.display = "block"
+                metaPanel.style.display = "none"
+            }
+        }
+        
+    </script>
 </div>
 
 

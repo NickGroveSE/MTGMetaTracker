@@ -2,6 +2,7 @@
  
 <script type="text/javascript">
 
+  // Initialize Variables that will store Data
   var dataSet = []
   var dates = "<%-data.map((value) => value.date)%>".split(',')
   var metas = "<%-data.map((value) => value.meta)%>".split(',').map((value) => Number(value))
@@ -18,11 +19,13 @@
     meta: 0.15
   })
 
+  // Set Date Range for X-Axis
   const endDate = dataSet[dataSet.length-1].date
   const startDate = new Date(endDate)
   startDate.setFullYear(startDate.getFullYear() - 1)
   const xRange = [startDate, endDate]
 
+  // Set Range 
   const metaMax = Math.max(...metas)/100 + 0.02
   var yMetaRange = [0,metaMax]
 
