@@ -60,6 +60,16 @@
   svg.append("g")
     .call(d3.axisLeft(y).tickFormat(d3.format('.0%')))
 
+  svg.append('g')
+    .selectAll("dot")
+    .data(dataSet)
+    .enter()
+    .append("circle")
+    .attr("cx", function (d) { return x(d.date); } )
+    .attr("cy", function (d) { return y(d.meta); } )
+    .attr("r", 1.5)
+    .style("fill", "red")
+
   var line = d3.line()
     .x(d => x(d.date))
     .y(d => y(d.meta))
