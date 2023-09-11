@@ -23,7 +23,7 @@ router.get('/:format/:name', async (req, res) => {
     try {
         archetype = await Archetype.find({name: nameWithSpace})
         console.log()
-        res.render(`format/${req.params.format}/show`, {data: archetype[0].data})
+        res.render(`format/${req.params.format}/show`, {archetype: archetype[0]})
     } catch {
         res.redirect('/')
     }

@@ -4,8 +4,8 @@
 
   // Initialize Variables that will store Data
   var dataSet = []
-  var dates = "<%-data.map((value) => value.date)%>".split(',')
-  var metas = "<%-data.map((value) => value.meta)%>".split(',').map((value) => Number(value))
+  var dates = "<%-archetype.data.map((value) => value.date)%>".split(',')
+  var metas = "<%-archetype.data.map((value) => value.meta)%>".split(',').map((value) => Number(value))
 
   for (let i = 0; i < dates.length; i++) {
     dataSet.push({
@@ -60,14 +60,6 @@
   svg.append("g")
     .call(d3.axisLeft(y).tickFormat(d3.format('.0%')))
 
-  svg.selectAll(".point")
-      .data(dataSet)
-      .enter().append("path")
-      .attr("class", "point")
-      .attr("d", d3.symbol().type(d3.symbolDiamond).size(30))
-      .attr("fill", "#1D63FF")
-      .attr("transform", function(d) { return "translate(" + x(d.date) + "," + y(d.meta) + ")"; })
-
   var line = d3.line()
     .x(d => x(d.date))
     .y(d => y(d.meta))
@@ -78,4 +70,18 @@
     .attr("stroke", "#1D63FF")
     .attr("stroke-width", 1)
     .attr("d", line)
+  
+  svg.selectAll(".point")
+    .data(dataSet)
+    .enter().append("path")
+    .attr("class", "point")
+    .attr("d", d3.symbol().type(d3.symbolDiamond).size(30))
+    .attr("fill", "#1D63FF")
+    .attr("transform", function(d) { return "translate(" + x(d.date) + "," + y(d.meta) + ")"; })
+    .on('mouseover', function (d, i) {
+      d3.select(this).transition()
+        .attr("fill", "red")})
+    .on('mouseout', function (d, i) {
+      d3.select(this).transition()
+            .attr("fill", "#1D63FF")})
 </script>

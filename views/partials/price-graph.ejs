@@ -3,8 +3,8 @@
 <script type="text/javascript">
 
   dataSet = []
-  dates = "<%-data.map((value) => value.date)%>".split(',')
-  var prices = "<%-data.map((value) => value.price)%>".split(',').map((value) => Number(value))
+  dates = "<%-archetype.data.map((value) => value.date)%>".split(',')
+  var prices = "<%-archetype.data.map((value) => value.price)%>".split(',').map((value) => Number(value))
 
   for (let i = 0; i < dates.length; i++) {
     dataSet.push({
@@ -45,14 +45,6 @@
   svg.append("g")
     .call(d3.axisLeft(y).tickFormat(d3.format('$')))
 
-  svg.selectAll(".point")
-    .data(dataSet)
-    .enter().append("path")
-    .attr("class", "point")
-    .attr("d", d3.symbol().type(d3.symbolDiamond).size(30))
-    .attr("fill", "#1D63FF")
-    .attr("transform", function(d) { return "translate(" + x(d.date) + "," + y(d.price) + ")"; })
-
   line = d3.line()
     .x(d => x(d.date))
     .y(d => y(d.price))
@@ -60,7 +52,21 @@
   svg.append("path")
     .datum(dataSet)
     .attr("fill", "none")
-    .attr("stroke", "#1D63FF")
+    .attr("stroke", "#FFC000")
     .attr("stroke-width", 1)
     .attr("d", line)
+
+  svg.selectAll(".point")
+    .data(dataSet)
+    .enter().append("path")
+    .attr("class", "point")
+    .attr("d", d3.symbol().type(d3.symbolDiamond).size(30))
+    .attr("fill", "#FFC000")
+    .attr("transform", function(d) { return "translate(" + x(d.date) + "," + y(d.price) + ")"; })      
+    .on('mouseover', function (d, i) {
+      d3.select(this).transition()
+        .attr("fill", "red")})
+    .on('mouseout', function (d, i) {
+      d3.select(this).transition()
+        .attr("fill", "#FFC000")})
 </script>
