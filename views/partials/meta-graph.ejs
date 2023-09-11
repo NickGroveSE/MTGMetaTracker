@@ -60,18 +60,13 @@
   svg.append("g")
     .call(d3.axisLeft(y).tickFormat(d3.format('.0%')))
 
-  var sym = d3.symbol()
-    .type(d3.symbolDiamond).size(50)
-
-  svg.append("path") 
-    .attr("d", sym)
-    .attr("fill", "#1D63FF")
-    .attr("transform", "translate(50,50)")
-
-  // svg.append('path')
-  //   .datum(dataSet)
-  //   .append("d", diamond)
-  //   .style("fill", "#1D63FF")
+  svg.selectAll(".point")
+      .data(dataSet)
+      .enter().append("path")
+      .attr("class", "point")
+      .attr("d", d3.symbol().type(d3.symbolDiamond).size(30))
+      .attr("fill", "#1D63FF")
+      .attr("transform", function(d) { return "translate(" + x(d.date) + "," + y(d.meta) + ")"; })
 
   var line = d3.line()
     .x(d => x(d.date))
