@@ -1,6 +1,25 @@
 <h1>Home Page</h1>
 
-Choose What Format?
-<a href="/format/pioneer">Pioneer</a>
-<a href="/format/modern">Modern</a>
-<a href="/format/pauper">Pauper</a>
+<div id="format-selection-container">
+    Choose What Format?
+    <br>
+    <form id="format-selection-form">
+        <select id="format-selection">
+            <option value="pioneer">Pioneer</option>
+            <option value="modern">Modern</option>
+            <option value="pauper">Pauper</option>
+        </select>
+        <br>
+        <input id="format-submission-button" type="submit" onclick="handleDropdownOption()"/>
+    </form>
+
+    <script>
+        function handleDropdownOption() {
+            var actionSrc = "/format/" + document.getElementById("format-selection").value
+            var form = document.getElementById('format-selection-form')
+            form.method = "GET"
+            form.action = actionSrc
+        }
+    </script>
+</div>
+
