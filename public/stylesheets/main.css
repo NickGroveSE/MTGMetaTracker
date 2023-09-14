@@ -1,7 +1,8 @@
-@import 'shared/fonts.css';
+body {
+    margin: 0;
+}
 
 h1 {
-    font-family: 'LuloCleanW01-OneBold';
     font-size: 30px;
 }
 
@@ -10,21 +11,32 @@ p {
     font-size: 15px;
 }
 
-ul {
-    font-family: 'LuloCleanW01-OneBold';
-    font-size: 20px;
+#nav-bar {
+    margin: none;
+}
+
+#nav-bar-collection {
+    display: flex;
     list-style-type: none;
-    margin: 0;
+    gap: 20px;
     padding: 0;
+    margin: 0 30px 0 30px;
 } 
 
+.left-nav {
+    margin-right: auto;
+}
+
 li a {
-    background-color: #dddddd;
+    text-decoration: none;
+    color: black;
 }
 
 li {
     display: inline;
     text-align: center;
+    margin: 10px 0 10px 0;
+    padding: 10px;
 }
 
 #format-selection-container {
