@@ -119,14 +119,50 @@ html, body {
     min-height: 100vh;
 }
 
-/* Home Page */
-#format-selection-container {
+.content-container {
     margin-top: -10px;
     border-top-right-radius: 10px;
     background-color: #FCFCFC;
+}
+
+/* Home Page */
+#format-selection-container {
+    display: table;
+    width: 100%;
     text-align: center;
     color: #02111B;
     height: calc(100vh - 126px);
+}
+
+#format-selection-form {
+    height: calc(100vh - 126px);
+    width: fit-content;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#format-selection {
+    height: 45px;
+    width: 250px;
+    margin: 2px;
+    border: 1.5px solid #1D63FF;
+    border-radius: 5px;
+}
+
+#format-submission-button {
+    visibility: hidden;
+    height: 45px;
+    width: 250px;
+    margin: 2px;
+    background-color: #1D63FF;
+    color: #FCFCFC;
+    border: none;
+    border-radius: 10px;
+    animation: pulse 3s ease infinite;
+}
+
+#dropdown-placeholder {
+    color: gray;
 }
 
 /* Archetype Page */
@@ -148,3 +184,21 @@ footer {
     width: 88.7px;
     height: 50px;
 } */
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.9, 0.9);
+        border: 1px solid #558AFF;
+        outline: 1px solid #8EB1FF;
+    }
+    50% {
+        transform: scale(1);
+        border: 3px solid #558AFF;
+        outline: 3px solid #8EB1FF;
+    }
+    100% {
+        transform: scale(0.9, 0.9);
+        border: 1px solid #558AFF;
+        outline: 1px solid #8EB1FF;
+    }
+}

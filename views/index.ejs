@@ -1,9 +1,8 @@
 
-<div id="format-selection-container">
-    Choose What Format?
-    <br>
+<div class="content-container" id="format-selection-container">
     <form id="format-selection-form">
-        <select id="format-selection">
+        <select id="format-selection" onchange="buttonVisible()">
+            <option value="placeholder" id="dropdown-placeholder">Select a Format</option>
             <option value="pioneer">Pioneer</option>
             <option value="modern">Modern</option>
             <option value="pauper">Pauper</option>
@@ -14,10 +13,22 @@
 
     <script>
         function handleDropdownOption() {
-            var actionSrc = "/format/" + document.getElementById("format-selection").value
-            var form = document.getElementById('format-selection-form')
-            form.method = "GET"
-            form.action = actionSrc
+            if(document.getElementById("format-selection").value != "placeholder") {
+                var actionSrc = "/format/" + document.getElementById("format-selection").value
+                var form = document.getElementById('format-selection-form')
+                form.method = "GET"
+                form.action = actionSrc
+            }
+        }
+
+        function buttonVisible() {
+            if(document.getElementById("format-selection").value != "placeholder") {
+                var submit = document.getElementById("format-submission-button")
+                submit.style.visibility = "visible"
+            } else {
+                var submit = document.getElementById("format-submission-button")
+                submit.style.visibility = "hidden"
+            }
         }
     </script>
 </div>
