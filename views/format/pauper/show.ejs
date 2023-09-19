@@ -1,0 +1,30 @@
+<div class="tabs-container">
+    <div class="content-container">
+        <%- include('../../partials/tab-view.ejs') %>
+        <div class="tab-panels">
+            <div id="meta" aria-labelledby="tab-1">
+                <%- include('../../partials/meta-graph.ejs') %>
+            </div>
+    
+            <div id="price" aria-labelledby="tab-2">
+                <%- include('../../partials/price-graph.ejs') %>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        const metaPanel = document.getElementById("meta")
+        const pricePanel = document.getElementById("price")
+        pricePanel.style.display = "none"
+
+        function graphToggle(element) {
+            if ($(element).text() == "Meta") {
+                pricePanel.style.display = "none"
+                metaPanel.style.display = "block"
+            } else {
+                pricePanel.style.display = "block"
+                metaPanel.style.display = "none"
+            }
+        }
+        
+    </script>
+</div>

@@ -18,7 +18,7 @@
 
 #periwinkle-div {
     background-color: #C6D8FF;
-    height: 92px;
+    height: 82px;
 }
 
 /* Nav Bar Container */
@@ -120,9 +120,8 @@ html, body {
 }
 
 .content-container {
-    margin-top: -10px;
-    border-top-right-radius: 10px;
     background-color: #FCFCFC;
+    height: calc(100vh - 126px);
 }
 
 /* Home Page */
@@ -131,7 +130,6 @@ html, body {
     width: 100%;
     text-align: center;
     color: #02111B;
-    height: calc(100vh - 126px);
 }
 
 #format-selection-form {
@@ -166,6 +164,21 @@ html, body {
 }
 
 /* Archetype Page */
+.tab-item {
+    padding: 5px 30px 5px 30px;
+    margin-bottom: -1px;
+    border: 1px solid #1D63FF;
+    border-bottom: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #FCFCFC;
+}
+
+.tab-panels {
+    
+    border-top: 1px solid #1D63FF;
+}
+
 .tab-buttons {
     color: black;
 }
@@ -174,6 +187,15 @@ footer {
     display: flex;
     background-color: #8EB1FF;
     align-items: end;
+}
+
+.graph-tabs {
+    margin: 0;
+    padding-top: 30px;
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 /* Misc Possible Functionality Needed Later */
