@@ -6,14 +6,12 @@
 
 #cornflower-blue-div {
     background-color: #558AFF;
-    height: 66px;
-    border-bottom-left-radius: 10px;
+    height: 61px;
 }
 
 #jordy-blue-div {
     background-color: #8EB1FF;
-    height: 74px;
-    border-bottom-left-radius: 5px;
+    height: 64px;
 }
 
 #periwinkle-div {
@@ -25,7 +23,6 @@
 #nav-bar {
     margin: none;
     background-color: #1D63FF;
-    border-radius: 0 0 0 15px;
 }
 
 /* Unordered List Elements */
@@ -121,7 +118,7 @@ html, body {
 
 .content-container {
     background-color: #FCFCFC;
-    height: calc(100vh - 126px);
+    /* height: calc(100vh - 126px); */
 }
 
 /* Home Page */
@@ -133,7 +130,7 @@ html, body {
 }
 
 #format-selection-form {
-    height: calc(100vh - 126px);
+    
     width: fit-content;
     display: table-cell;
     vertical-align: middle;
@@ -175,7 +172,6 @@ html, body {
 }
 
 .tab-panels {
-    
     border-top: 1px solid #1D63FF;
 }
 
@@ -184,18 +180,24 @@ html, body {
 }
 
 footer {
-    display: flex;
-    background-color: #8EB1FF;
+    background-color: #C6D8FF;
     align-items: end;
 }
 
 .graph-tabs {
     margin: 0;
-    padding-top: 30px;
+    padding-top: 20px;
     list-style-type: none;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    background-color: #C6D8FF;
+}
+
+.archetype-title {
+    background-color: #C6D8FF;
+    font-size: 30px;
+    font-weight: bolder;
 }
 
 /* Misc Possible Functionality Needed Later */

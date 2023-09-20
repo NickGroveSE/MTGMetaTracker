@@ -1,0 +1,44 @@
+<script type="text/javascript">
+    const neonBlue = "#1D63FF"
+    const lightBlue = "#8EB1FF"
+    const offWhite = "#FCFCFC"
+
+    const metaPanel = document.getElementById("meta")
+    const pricePanel = document.getElementById("price")
+    const metaItem = document.getElementById("meta-item")
+    const priceItem = document.getElementById("price-item")
+    const metaButton = document.getElementById("meta-button")
+    const priceButton = document.getElementById("price-button")
+
+    priceItem.style.backgroundColor = neonBlue
+    priceItem.style.borderBottom = "1px solid " + neonBlue
+    priceButton.style.color = offWhite
+    pricePanel.style.display = "none"
+    metaPanel.style.display = "block"
+
+    function graphToggle(element) {
+        if ($(element).text() == "Meta") {
+            pricePanel.style.display = "none"
+            priceItem.style.backgroundColor = neonBlue
+            priceItem.style.borderBottom = "1px solid " + neonBlue
+            priceButton.style.color = offWhite
+
+            metaPanel.style.display = "block"
+            metaItem.style.backgroundColor = offWhite
+            metaItem.style.borderBottom = "none"
+            metaButton.style.color = "black"
+        } else {
+            pricePanel.style.display = "block"
+            priceItem.style.backgroundColor = offWhite
+            priceItem.style.borderBottom = "none"
+            priceButton.style.color = "black"
+
+            metaPanel.style.display = "none"
+            metaItem.style.backgroundColor = neonBlue
+            metaItem.style.borderBottom = "1px solid " + neonBlue
+            metaButton.style.color = offWhite
+            
+        }
+    }
+    
+</script>
