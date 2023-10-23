@@ -229,3 +229,18 @@ footer {
         outline: 1px solid #8EB1FF;
     }
 }
+
+.archetype-link {
+    text-decoration: none;
+}
+
+.archetype-panel {
+    width: 300px;
+    height: 100px;
+    margin: 10px;
+    padding: 10px;
+    display: inline-block;
+    border-radius: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
