@@ -6,6 +6,7 @@ router.get('/', (req, res) => {
     res.render('format/index')
 })
 
+// Routing to the page that lists out the top archetypes in a Format
 router.get('/:format', async (req,res) =>{
     const formatUpper = req.params.format.charAt(0).toUpperCase() + req.params.format.slice(1)
     try {
@@ -16,6 +17,7 @@ router.get('/:format', async (req,res) =>{
     }
 })
 
+// Routing to the page for a specific archetype
 router.get('/:format/:name', async (req, res) => {
 
     let archetype

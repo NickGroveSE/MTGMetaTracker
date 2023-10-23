@@ -10,34 +10,39 @@
     const metaButton = document.getElementById("meta-button")
     const priceButton = document.getElementById("price-button")
 
-    priceItem.style.backgroundColor = neonBlue
+    priceItem.style.backgroundColor = lightBlue
     priceItem.style.borderBottom = "1px solid " + neonBlue
     priceButton.style.color = offWhite
+    priceButton.style.cursor = "pointer"
     pricePanel.style.display = "none"
     metaPanel.style.display = "block"
+    metaButton.style.cursor = "default"
 
     function graphToggle(element) {
         if ($(element).text() == "Meta") {
             pricePanel.style.display = "none"
-            priceItem.style.backgroundColor = neonBlue
+            priceItem.style.backgroundColor = lightBlue
             priceItem.style.borderBottom = "1px solid " + neonBlue
             priceButton.style.color = offWhite
+            priceButton.style.cursor = "pointer"
 
             metaPanel.style.display = "block"
             metaItem.style.backgroundColor = offWhite
             metaItem.style.borderBottom = "none"
             metaButton.style.color = "black"
+            metaButton.style.cursor = "default"
         } else {
             pricePanel.style.display = "block"
             priceItem.style.backgroundColor = offWhite
             priceItem.style.borderBottom = "none"
             priceButton.style.color = "black"
+            priceButton.style.cursor = "default"
 
             metaPanel.style.display = "none"
-            metaItem.style.backgroundColor = neonBlue
+            metaItem.style.backgroundColor = lightBlue
             metaItem.style.borderBottom = "1px solid " + neonBlue
             metaButton.style.color = offWhite
-            
+            metaButton.style.cursor = "pointer"
         }
     }
     

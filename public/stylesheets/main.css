@@ -16,7 +16,7 @@
 
 #periwinkle-div {
     background-color: #C6D8FF;
-    height: 82px;
+    height: 67px;
 }
 
 /* Nav Bar Container */
@@ -162,8 +162,8 @@ html, body {
 
 /* Archetype Page */
 .tab-item {
-    padding: 5px 30px 5px 30px;
     margin-bottom: -1px;
+    padding: 5px 0 5px 0;
     border: 1px solid #1D63FF;
     border-bottom: none;
     border-top-left-radius: 10px;
@@ -176,28 +176,31 @@ html, body {
 }
 
 .tab-buttons {
+    padding: 0 30px 0 30px;
     color: black;
 }
 
 footer {
-    background-color: #C6D8FF;
+    background-color: #1D63FF;
     align-items: end;
 }
 
 .graph-tabs {
     margin: 0;
-    padding-top: 20px;
+    padding-top: 14px;
     list-style-type: none;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    background-color: #C6D8FF;
+    background-color: #FCFCFC;
 }
 
 .archetype-title {
-    background-color: #C6D8FF;
+    background-color: #FCFCFC;
     font-size: 30px;
     font-weight: bolder;
+    padding-top: 5px;
+    margin-left: 20px;
 }
 
 /* Misc Possible Functionality Needed Later */
