@@ -8,6 +8,7 @@ Main Priorities:
 + Finish Formatting of Pages and Make them Responsive
 + Set Up Format Info, Contact Page, Donation Page, and Link to Github (Twilio, Donation Functionality)
 + Write the About Me Page
++ How to deal with gaps in data, Decks be out of the meta, etc.
 
 Debugging Priorities:
 + 
