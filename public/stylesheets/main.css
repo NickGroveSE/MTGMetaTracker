@@ -211,16 +211,83 @@ footer {
 }
 
 .archetype-panel {
+    color: black;
     width: 300px;
     height: 100px;
-    margin: 10px;
+    margin: 5px;
     padding: 10px;
     display: inline-block;
     border-radius: 2px;
     border: 1px solid rgba(0, 0, 0, 0.2);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25) 0px 2px 4px inset;
 }
 
 header {
     background-color: #1D63FF;
 }
+  
+.panel-section {
+    height: 50px;
+}
+
+.panel-element {
+    display: inline-block;
+}
+
+#archetype-name {
+    font-size: 22px;
+}
+
+#color-identity {
+    float: right;
+}
+
+#meta {
+    width: 112px;
+}
+
+#price {
+    width: 114px;
+    float: right;
+}
+
+.heading {
+    font-size: 15px;
+    text-align: center;
+}
+
+#panel-bottom {
+    padding-top: 5px;
+}
+
+.statistic {
+    display: inline-block;
+    font-size: 22px;
+    text-align: right;
+}
+
+.stat-change {
+    display: inline-block;
+    font-size: 12px;
+    color: green;
+    text-align: left;
+    vertical-align: top;
+}
+
+#meta-stat {
+    width: 65px;
+}
+
+#meta-stat-change {
+    width: 42.5px;
+}
+
+#price-stat {
+    width: 75px;
+}
+
+#price-stat-change {
+    width: 35px;
+}
+
+

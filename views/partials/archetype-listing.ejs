@@ -1,12 +1,26 @@
 <% for (let i = 0; i < archetypes.length; i++) { %>
     <a class="archetype-link" href="/format/<%= archetypes[i].format.charAt(0).toLowerCase() + archetypes[i].format.slice(1) %>/<%= archetypes[i].name.replace(" ", "-")%>">
         <div class="archetype-panel">
-            <div><%= archetypes[i].name %></div>
-            <div>
-                Meta %
-                Price $
+            <div class="panel-section" id="panel-top">
+                <div class="panel-element" id="archetype-name"><%= archetypes[i].name %></div>
+                <div class="panel-element" id="color-identity">Color</div>
             </div>
-            <div>Colors</div>
+            <div class="panel-section" id="panel-bottom">
+                <div class="panel-element" id="meta">
+                <div class="heading">Meta %</div>
+                <div class="statistical-element">
+                    <div class="statistic" id="meta-stat"><%= archetypes[i].data[0].meta %>%</div>
+                    <div class="stat-change" id="meta-stat-change">+00.0%</div>
+                </div>
+                </div>
+                <div class="panel-element" id="price">
+                <div class="heading">Price</div>
+                <div class="statistical-element">
+                    <div class="statistic" id="price-stat">$0,000</div>
+                    <div class="stat-change" id="price-stat-change">-$000</div>
+                </div>
+                </div>
+            </div>
         </div>
     </a>
     
