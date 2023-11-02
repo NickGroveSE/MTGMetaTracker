@@ -1,29 +1,5 @@
 /* Nav Bar Properties */
 /* Under Nav Bar */
-.divider {
-    width: 100%;
-}
-
-#cornflower-blue-div {
-    background-color: #558AFF;
-    height: 61px;
-}
-
-#jordy-blue-div {
-    background-color: #8EB1FF;
-    height: 64px;
-}
-
-#periwinkle-div {
-    background-color: #C6D8FF;
-    height: 67px;
-}
-
-/* Nav Bar Container */
-#nav-bar {
-    margin: none;
-    background-color: #1D63FF;
-}
 
 /* Unordered List Elements */
 #nav-bar-collection {
@@ -118,7 +94,7 @@ html, body {
 
 .content-container {
     background-color: #FCFCFC;
-    /* height: calc(100vh - 126px); */
+    min-height: calc(100vh - 102px);
 }
 
 /* Home Page */
@@ -212,7 +188,7 @@ footer {
     height: 50px;
 } */
 
-@keyframes pulse {
+/* @keyframes pulse {
     0% {
         transform: scale(0.9, 0.9);
         border: 1px solid #558AFF;
@@ -228,7 +204,7 @@ footer {
         border: 1px solid #558AFF;
         outline: 1px solid #8EB1FF;
     }
-}
+} */
 
 .archetype-link {
     text-decoration: none;
@@ -243,4 +219,8 @@ footer {
     border-radius: 2px;
     border: 1px solid rgba(0, 0, 0, 0.2);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+header {
+    background-color: #1D63FF;
 }
