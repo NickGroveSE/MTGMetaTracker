@@ -19,7 +19,7 @@ async function performScraping() {
         // Download Mtggoldfish using Axios
         const axiosResponse = await axios.request({
             method: "GET",
-            url: `https://www.mtggoldfish.com/metagame/${formats[i]}#paper`,
+            url: `https://www.mtggoldfish.com/metagame/${formats[i]}/full#paper`,
             headers: {
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
             }
@@ -51,6 +51,8 @@ async function performScraping() {
                 var instance = new Archetype({
                     name: locateArchetypeName(archetypeElement, j), 
                     format: currentFormat, 
+                    meta_change: 0.0,
+                    price_change: 0.0,
                     data: [{
                         date: dataPoint.date, 
                         meta: dataPoint.meta, 
@@ -66,7 +68,9 @@ async function performScraping() {
                 // Push New Data Onto Existing Archetype
                 const pushResponse = await Archetype.updateOne(
                     {'name': isInstanceSaved[0].name, 'format': currentFormat},
-                    {'$push': {'data': [{
+                    {'meta_change': 1.0,
+                    'price_change': 1.0,
+                    '$push': {'data': [{
                         'date': dataPoint.date, 
                         'meta': dataPoint.meta, 
                         'price': dataPoint.price
@@ -95,8 +99,7 @@ function generateArchetypes(doc) {
         .childNodes[1]
         .childNodes[2]
         .childNodes[0]
-        .childNodes[6]
-        .childNodes[0]
+        .childNodes[4]
         .childNodes[1]
 }
 
@@ -136,6 +139,10 @@ function locateArchetypePrice(archetypes, position) {
         .childNodes[0]
         .childNodes[1]
         .childNodes[0].value
+
+}
+
+function differenceCalc() {
 
 }
 

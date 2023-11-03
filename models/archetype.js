@@ -5,6 +5,8 @@ const mongoose = require('mongoose')
 const archetypeSchema = new mongoose.Schema({
     name: String,
     format: String,
+    meta_change: Number,
+    price_change: Number,
     data: [{
         _id: false,
         date: String,

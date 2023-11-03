@@ -1,10 +1,10 @@
 Tasks that I need to get done for the demo: - means finished, + means not finished
 
 Main Priorities:
-+ Format how the archetypes are listed
+- Format how the archetypes are listed
 + Change Scraper so that it pulls from mtggoldfish.com's main Format pages (TLDR more Archetype data)
 + Implement data change function in the Archtype Schema and Scraper
-+ Clear Unnecessary Styling for right now
+- Clear Unnecessary Styling for right now
 + Finish Formatting of Pages and Make them Responsive
 + Set Up Format Info, Contact Page, Donation Page, and Link to Github (Twilio, Donation Functionality)
 + Write the About Me Page
