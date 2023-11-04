@@ -3,21 +3,21 @@
         <div class="archetype-panel">
             <div class="panel-section" id="panel-top">
                 <div class="panel-element" id="archetype-name"><%= archetypes[i].name %></div>
-                <div class="panel-element" id="color-identity">Color</div>
+                <div class="panel-element" id="color-identity"><%= archetypes[i].colors %></div>
             </div>
             <div class="panel-section" id="panel-bottom">
                 <div class="panel-element" id="meta">
                     <div class="heading">Meta %</div>
                         <div class="statistical-element">
-                            <div class="statistic" id="meta-stat"><%= archetypes[i].data[0].meta %>%</div>
-                            <div class="stat-change" id="meta-stat-change">+00.0%</div>
+                            <div class="statistic" id="meta-stat" len="<%= archetypes[i].data[0].meta.toFixed(1).toString().length %>"><%= archetypes[i].data[0].meta.toFixed(1) %>%</div>
+                            <div class="stat-change" id="meta-stat-change"><%= archetypes[i].meta_change %>%</div>
                         </div>
                 </div>
                 <div class="panel-element" id="price">
-                <div class="heading">Price</div>
+                <div class="heading" id="price-heading" len="<%= archetypes[i].data[0].price.toString().length %>">Price $</div>
                     <div class="statistical-element">
-                        <div class="statistic" id="price-stat">$0,000</div>
-                        <div class="stat-change" id="price-stat-change">-$000</div>
+                        <div class="statistic" id="price-stat">$<%= archetypes[i].data[0].price %></div>
+                        <div class="stat-change" id="price-stat-change"><%= archetypes[i].price_change.replace(" ", "$") %></div>
                 </div>
                 </div>
             </div>

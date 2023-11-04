@@ -40,9 +40,10 @@ async function performScraping() {
             // Initialize DataPoint
             var dataPoint = new DataPoint(
                 new Date(), 
-                parseFloat(locateArchetypeMetaPercentage(archetypeElement, j).value.replace('%', '')), 
-                parseInt(locateArchetypePrice(archetypeElement, j).replace('$', ''))
+                parseFloat(locateArchetypeMetaPercentage(archetypeElement, j).value.replace('%', '')).toFixed(1), 
+                parseInt(locateArchetypePrice(archetypeElement, j).replace('$', '').replace(',', ''))
             )
+
             
             // If New Archetype, Else Push DataPoint
             if (isInstanceSaved.length == 0) {
@@ -53,7 +54,7 @@ async function performScraping() {
                     format: currentFormat,
                     colors: locateColorIdentity(archetypeElement, j), 
                     meta_change: "+/-0",
-                    price_change: "+/-0",
+                    price_change: "+/- 0",
                     data: [{
                         date: dataPoint.date, 
                         meta: dataPoint.meta, 
@@ -175,20 +176,32 @@ function differenceCalc(lastEntry, currentEntry) {
 
     // Initialize our Arrays
     // statChange is for our numerical values, and displayChange is the Strings of these values to be displayed in the DB
-    var statChange = [(currentEntry.meta - lastEntry.meta), currentEntry.price - lastEntry.price]
+    var statChange = [currentEntry.meta - lastEntry.meta, currentEntry.price - lastEntry.price]
     var displayChange = []
 
     // Loop Through statChange, Therefore going through the changes in Meta and Price
     for (let i = 0; i < statChange.length; i++) {
         switch (true) {
             case (statChange[i] == 0):
-                displayChange[i] = "+/-0"
+                if (i == 0) {
+                    displayChange[i] = "+/-0"
+                } else {
+                    displayChange[i] = "+/- 0"
+                }
                 break
             case (statChange[i] > 0):
-                displayChange[i] = "+" + statChange[i].toFixed(1).toString()
+                if (i == 0) {
+                    displayChange[i] = "+" + statChange[i].toFixed(1).toString()
+                } else {
+                    displayChange[i] = "+ " + statChange[i].toFixed(0).toString()
+                }
                 break
             case (statChange[i] < 0):
-                displayChange[i] = statChange[i].toFixed(1).toString()
+                if (i == 0) {
+                    displayChange[i] = statChange[i].toFixed(1).toString()
+                } else {
+                    displayChange[i] = statChange[i].toFixed(0).toString().slice(0, 1) + " " + statChange[i].toFixed(0).toString().slice(1)
+                }
                 break
         }
     }

@@ -41,6 +41,6 @@ if (currently == "live") {
     });
 } else if (currently == "scrapetest") {
     scraper.scrape()
-} else if (currently == "frontend")
+} 
 
 app.listen(process.env.PORT || 3000)

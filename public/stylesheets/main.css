@@ -247,7 +247,7 @@ header {
 }
 
 #price {
-    width: 114px;
+    width: 105px;
     float: right;
 }
 
@@ -283,11 +283,25 @@ header {
 }
 
 #price-stat {
-    width: 75px;
+    width: 66px;
 }
 
 #price-stat-change {
     width: 35px;
+}
+
+#price-heading[len="3"] {
+    width: 85px;
+    padding-left: 15px;
+}
+
+#price-heading[len="2"] {
+    width: 70px;
+    padding-left: 30px;
+}
+
+#meta-stat[len="3"] {
+    width: 60px
 }
 
 
