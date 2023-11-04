@@ -11,7 +11,7 @@ Main Priorities:
 + How to deal with gaps in data, Decks be out of the meta, etc.
 
 Debugging Priorities:
-+ Some Archetypes Have the Same Name
+- Some Archetypes Have the Same Name
 
 Going Live:
 + Heroku Setup
