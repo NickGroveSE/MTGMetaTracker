@@ -32,7 +32,7 @@ app.use('/about', aboutRouter)
 app.use('/contact', contactRouter)
 app.use('/format', formatRouter)
 
-var currently = "frontend"
+var currently = "scrapetest"
 
 if (currently == "live") {
     // Schedule Weekly Web Scraping

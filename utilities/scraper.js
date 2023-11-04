@@ -35,7 +35,7 @@ async function performScraping() {
         for (let j = 0; j < archetypeElement.childNodes.length; j++) {
 
             // Check for Any Archetypes Under This Name and Format, Later Used to See If This is a New or Existing Archetype
-            const isInstanceSaved = await Archetype.find(({name: {$regex: locateArchetypeName(archetypeElement, j)}, format: {$regex: currentFormat}}))
+            const isInstanceSaved = await Archetype.find(({name: {$regex: locateArchetypeName(archetypeElement, j)}, format: {$regex: currentFormat}, colors: {$regex: locateColorIdentity(archetypeElement, j)}}))
 
             // Initialize DataPoint
             var dataPoint = new DataPoint(
@@ -50,9 +50,10 @@ async function performScraping() {
                 // Create New Instance of Archetype Model
                 var instance = new Archetype({
                     name: locateArchetypeName(archetypeElement, j), 
-                    format: currentFormat, 
-                    meta_change: 0.0,
-                    price_change: 0.0,
+                    format: currentFormat,
+                    colors: locateColorIdentity(archetypeElement, j), 
+                    meta_change: "+/-0",
+                    price_change: "+/-0",
                     data: [{
                         date: dataPoint.date, 
                         meta: dataPoint.meta, 
@@ -65,18 +66,21 @@ async function performScraping() {
 
             } else {
 
-                // Push New Data Onto Existing Archetype
+                // Initialize the Last Data Entry, Call Function to Calculate Increases and Decreases from Last Week
+                const lastDataEntry = isInstanceSaved[0].data[isInstanceSaved[0].data.length - 1]
+                const change = differenceCalc(lastDataEntry, dataPoint)
+
+                // Push New Data Onto Existing Archetype, Change Increases or Decreases in Data
                 const pushResponse = await Archetype.updateOne(
                     {'name': isInstanceSaved[0].name, 'format': currentFormat},
-                    {'meta_change': 1.0,
-                    'price_change': 1.0,
+                    {'meta_change': change[0],
+                    'price_change': change[1],
                     '$push': {'data': [{
                         'date': dataPoint.date, 
                         'meta': dataPoint.meta, 
                         'price': dataPoint.price
                     }]},}, 
                     {upsert: true})
-
 
             }
 
@@ -142,7 +146,54 @@ function locateArchetypePrice(archetypes, position) {
 
 }
 
-function differenceCalc() {
+// Traverse to Colors
+function locateColorIdentity(archetypes, position) {
+    
+    // Try/Catch for Finding Color Identity, so If this catches We Know that the Archetype is Colorless
+    try {
+        return archetypes.childNodes[position]
+            .childNodes[1]
+            .childNodes[0]
+            .childNodes[1]
+            .childNodes[0]
+            .attrs[2]
+            .value
+            .replace("colors: ", "")
+            .replace("white", "W")
+            .replace("blue", "U")
+            .replace("black", "B")
+            .replace("red", "R")
+            .replace("green", "G")
+    } catch (error) {
+        return "C"
+    }
+
+}
+
+// Calculations for Increases and Decreases Between Weeks
+function differenceCalc(lastEntry, currentEntry) {
+
+    // Initialize our Arrays
+    // statChange is for our numerical values, and displayChange is the Strings of these values to be displayed in the DB
+    var statChange = [(currentEntry.meta - lastEntry.meta), currentEntry.price - lastEntry.price]
+    var displayChange = []
+
+    // Loop Through statChange, Therefore going through the changes in Meta and Price
+    for (let i = 0; i < statChange.length; i++) {
+        switch (true) {
+            case (statChange[i] == 0):
+                displayChange[i] = "+/-0"
+                break
+            case (statChange[i] > 0):
+                displayChange[i] = "+" + statChange[i].toFixed(1).toString()
+                break
+            case (statChange[i] < 0):
+                displayChange[i] = statChange[i].toFixed(1).toString()
+                break
+        }
+    }
+
+    return displayChange;
 
 }
 
