@@ -2,7 +2,7 @@
     <a class="archetype-link" href="/format/<%= archetypes[i].format.charAt(0).toLowerCase() + archetypes[i].format.slice(1) %>/<%= archetypes[i].name.split(" ").join("_") + "*" + archetypes[i].colors.split(" ").join("")%>">
         <div class="archetype-panel">
             <div class="panel-section" id="panel-top">
-                <div class="panel-element" id="archetype-name"><%= archetypes[i].name %></div>
+                <div class="panel-element" id="archetype-name" color_len="<%= archetypes[i].colors.length %>"><%= archetypes[i].name %></div>
                 <div class="panel-element" id="color-identity"><%= archetypes[i].colors %></div>
             </div>
             <div class="panel-section" id="panel-bottom">
