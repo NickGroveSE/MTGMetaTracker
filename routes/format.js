@@ -21,18 +21,20 @@ router.get('/:format', async (req,res) =>{
 router.get('/:format/:name', async (req, res) => {
 
     let archetype
-    const nameColorSeparation = req.params.name.split("_")
+    const nameColorSeparation = req.params.name.split("*")
     console.log(nameColorSeparation)
-    const name = nameColorSeparation[0].replace("-", " ")
-    const colors = nameColorSeparation[1]
+    const name = nameColorSeparation[0].split("_").join(" ")
+    const colors = nameColorSeparation[1].split('').join(' ')
+
+    console.log()
 
     try {
-        archetype = await Archetype.find({name: name, format: req.params.format.charAt(0).toUpperCase() + req.params.format.slice(1), colors: colors.split('').join(' ')})
+        archetype = await Archetype.find({name: name, format: req.params.format.charAt(0).toUpperCase() + req.params.format.slice(1), colors: colors})
         res.render(`format/${req.params.format}/show`, {archetype: archetype[0]})
     } catch {
         res.redirect('/')
     }
-    
+
 })
 
 module.exports = router

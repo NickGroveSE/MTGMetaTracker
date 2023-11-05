@@ -1,5 +1,5 @@
 <% for (let i = 0; i < archetypes.length; i++) { %>
-    <a class="archetype-link" href="/format/<%= archetypes[i].format.charAt(0).toLowerCase() + archetypes[i].format.slice(1) %>/<%= archetypes[i].name.replace(" ", "-") + "_" + archetypes[i].colors.replace(" ", "")%>">
+    <a class="archetype-link" href="/format/<%= archetypes[i].format.charAt(0).toLowerCase() + archetypes[i].format.slice(1) %>/<%= archetypes[i].name.split(" ").join("_") + "*" + archetypes[i].colors.split(" ").join("")%>">
         <div class="archetype-panel">
             <div class="panel-section" id="panel-top">
                 <div class="panel-element" id="archetype-name"><%= archetypes[i].name %></div>
