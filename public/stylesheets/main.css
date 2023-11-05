@@ -240,6 +240,9 @@ header {
 
 #color-identity {
     float: right;
+    width: 30px;
+    height: 30px;
+    position: relative;
 }
 
 #meta {
@@ -304,6 +307,10 @@ header {
     width: 60px
 }
 
+#archetype-name {
+    height: 60px;
+}
+
 #archetype-name[color_len="9"] {
     width: 180px;
 }
@@ -323,5 +330,38 @@ header {
 #archetype-name[color_len="1"] {
     width: 260px;
 }
+
+.mana-image {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    background-size: 30px 30px;
+    display: inline-block;
+    filter: drop-shadow(1px 1px rgba(0, 0, 0, 0.75))
+}
+
+.mana-image:nth-child(1) {
+    right: 0px;
+}
+
+.mana-image:nth-child(2) {
+    right: 22.5px;
+    top: 7.5px;
+}
+
+.mana-image:nth-child(3) {
+    right: 45px;
+}
+
+.mana-image:nth-child(4) {
+    right: 67.5px;
+    top: 7.5px;
+}
+
+.mana-image:nth-child(5) {
+    right: 90px;
+}
+
+
 
 
