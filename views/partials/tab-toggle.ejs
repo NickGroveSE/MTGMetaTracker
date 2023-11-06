@@ -1,7 +1,6 @@
 <script type="text/javascript">
     const neonBlue = "#1D63FF"
     const lightBlue = "#8EB1FF"
-    const offWhite = "#FCFCFC"
 
     const metaPanel = document.getElementById("meta")
     const pricePanel = document.getElementById("price")
@@ -12,7 +11,7 @@
 
     priceItem.style.backgroundColor = lightBlue
     priceItem.style.borderBottom = "1px solid " + neonBlue
-    priceButton.style.color = offWhite
+    priceButton.style.color = "white"
     priceButton.style.cursor = "pointer"
     pricePanel.style.display = "none"
     metaPanel.style.display = "block"
@@ -23,17 +22,17 @@
             pricePanel.style.display = "none"
             priceItem.style.backgroundColor = lightBlue
             priceItem.style.borderBottom = "1px solid " + neonBlue
-            priceButton.style.color = offWhite
+            priceButton.style.color = "white"
             priceButton.style.cursor = "pointer"
 
             metaPanel.style.display = "block"
-            metaItem.style.backgroundColor = offWhite
+            metaItem.style.backgroundColor = "white"
             metaItem.style.borderBottom = "none"
             metaButton.style.color = "black"
             metaButton.style.cursor = "default"
         } else {
             pricePanel.style.display = "block"
-            priceItem.style.backgroundColor = offWhite
+            priceItem.style.backgroundColor = "white"
             priceItem.style.borderBottom = "none"
             priceButton.style.color = "black"
             priceButton.style.cursor = "default"
@@ -41,7 +40,7 @@
             metaPanel.style.display = "none"
             metaItem.style.backgroundColor = lightBlue
             metaItem.style.borderBottom = "1px solid " + neonBlue
-            metaButton.style.color = offWhite
+            metaButton.style.color = "white"
             metaButton.style.cursor = "pointer"
         }
     }

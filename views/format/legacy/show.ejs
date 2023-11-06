@@ -1,0 +1,16 @@
+<div class="content-container">
+    <div class="archetype-title"><%= archetype.name %></div>
+    <div class="tabs-container">
+        <%- include('../../partials/tab-view.ejs') %>
+        <div class="tab-panels">
+            <div id="meta">
+                <%- include('../../partials/meta-graph.ejs') %>
+            </div>
+    
+            <div id="price">
+                <%- include('../../partials/price-graph.ejs') %>
+            </div>
+        </div>
+    <%- include('../../partials/tab-toggle.ejs') %>
+    </div>
+</div>

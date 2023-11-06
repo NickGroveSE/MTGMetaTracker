@@ -19,8 +19,6 @@ router.get('/:format/:name', async (req, res) => {
 
     let archetype
     const nameColorSeparation = req.params.name.split("*")
-    console.log(nameColorSeparation)
-    console.log("Here")
     const name = nameColorSeparation[0].split("_").join(" ")
     const colors = nameColorSeparation[1].split('').join(' ')
 

@@ -2,7 +2,7 @@ const parse5 = require('parse5')
 const axios = require('axios')
 var DataPoint = require('./data-point.js')
 const Archetype = require('../models/archetype.js')
-const formats = ["pioneer" , "modern", "pauper"]
+const formats = ["pioneer" , "modern", "pauper", "legacy", "vintage"]
 
 // Web Scraping Function
 async function performScraping() {
