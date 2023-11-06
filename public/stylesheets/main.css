@@ -32,10 +32,10 @@
 .footer-item {
     display: inline;
     text-align: center;
-    margin: 10px 0 10px 0;
+    margin: 8.25px 0 8.25px 0;
     padding: 5px;
     color: white;
-    font-size: 12px;
+    font-size: 15px;
 }
 
 /* Nav Bar Anchor Tags */
@@ -93,9 +93,27 @@ html, body {
 }
 
 .content-container {
-    background-color: #FCFCFC;
     min-height: calc(100vh - 102px);
 }
+
+.specialized-content-container {
+    margin-left: 20px;
+    min-height: calc(100vh - 123.44px);
+}
+
+#about-paragraph {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+#archetype-container {
+    display: block;
+    width: 1021px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+
 
 /* Home Page */
 #format-selection-container {
@@ -113,8 +131,8 @@ html, body {
 }
 
 #format-selection {
-    height: 45px;
-    width: 250px;
+    height: 54px;
+    width: 300px;
     margin: 2px;
     border: 1.5px solid #1D63FF;
     border-radius: 5px;
@@ -122,11 +140,11 @@ html, body {
 
 #format-submission-button {
     visibility: hidden;
-    height: 45px;
-    width: 250px;
+    height: 54px;
+    width: 300px;
     margin: 2px;
     background-color: #1D63FF;
-    color: #FCFCFC;
+    color: white;
     border: none;
     border-radius: 10px;
     animation: pulse 3s ease infinite;
@@ -144,10 +162,11 @@ html, body {
     border-bottom: none;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    background-color: #FCFCFC;
+    background-color: white;
 }
 
 .tab-panels {
+    margin: 0.5px;
     border-top: 1px solid #1D63FF;
 }
 
@@ -168,11 +187,11 @@ footer {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    background-color: #FCFCFC;
+    background-color: white;
 }
 
 .archetype-title {
-    background-color: #FCFCFC;
+    background-color: white;
     font-size: 30px;
     font-weight: bolder;
     padding-top: 5px;
@@ -214,12 +233,17 @@ footer {
     color: black;
     width: 300px;
     height: 100px;
-    margin: 5px;
+    margin: 8px;
     padding: 10px;
     display: inline-block;
     border-radius: 2px;
     border: 1px solid rgba(0, 0, 0, 0.2);
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25) 0px 2px 4px inset;
+}
+
+.archetype-panel:hover {
+    transition: 0.8s;
+    box-shadow: 0 4px 6px rgb(29, 99, 255), rgb(29, 99, 255) 0px 2px 4px inset;
 }
 
 header {
@@ -245,11 +269,11 @@ header {
     position: relative;
 }
 
-#meta {
+#meta-element {
     width: 112px;
 }
 
-#price {
+#price-element {
     width: 105px;
     float: right;
 }

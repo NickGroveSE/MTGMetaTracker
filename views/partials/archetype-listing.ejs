@@ -12,17 +12,17 @@
                 </div>
             </div>
             <div class="panel-section" id="panel-bottom">
-                <div class="panel-element" id="meta">
+                <div class="panel-element" id="meta-element">
                     <div class="heading">Meta %</div>
-                        <div class="statistical-element">
-                            <div class="statistic" id="meta-stat" len="<%= archetypes[i].data[0].meta.toFixed(1).toString().length %>"><%= archetypes[i].data[0].meta.toFixed(1) %>%</div>
-                            <div class="stat-change" id="meta-stat-change"><%= archetypes[i].meta_change %>%</div>
-                        </div>
-                    </div>
-                <div class="panel-element" id="price">
-                <div class="heading" id="price-heading" len="<%= archetypes[i].data[0].price.toString().length %>">Price $</div>
                     <div class="statistical-element">
-                        <div class="statistic" id="price-stat">$<%= archetypes[i].data[0].price %></div>
+                        <div class="statistic" id="meta-stat" len="<%= archetypes[i].data[archetypes[i].data.length-1].meta.toFixed(1).toString().length %>"><%= archetypes[i].data[archetypes[i].data.length-1].meta.toFixed(1) %>%</div>
+                        <div class="stat-change" id="meta-stat-change"><%= archetypes[i].meta_change %>%</div>
+                    </div>
+                    </div>
+                <div class="panel-element" id="price-element">
+                    <div class="heading" id="price-heading" len="<%= archetypes[i].data[archetypes[i].data.length-1].price.toString().length %>">Price $</div>
+                    <div class="statistical-element">
+                        <div class="statistic" id="price-stat">$<%= archetypes[i].data[archetypes[i].data.length-1].price %></div>
                         <div class="stat-change" id="price-stat-change"><%= archetypes[i].price_change.replace(" ", "$") %></div>
                     </div>
                 </div>

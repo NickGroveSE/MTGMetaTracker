@@ -35,7 +35,7 @@ async function performScraping() {
         for (let j = 0; j < archetypeElement.childNodes.length; j++) {
 
             // Check for Any Archetypes Under This Name and Format, Later Used to See If This is a New or Existing Archetype
-            const isInstanceSaved = await Archetype.find(({name: {$regex: locateArchetypeName(archetypeElement, j)}, format: {$regex: currentFormat}, colors: {$regex: locateColorIdentity(archetypeElement, j)}}))
+            const isInstanceSaved = await Archetype.find(({name: locateArchetypeName(archetypeElement, j), format: currentFormat, colors: locateColorIdentity(archetypeElement, j)}))
 
             // Initialize DataPoint
             var dataPoint = new DataPoint(

@@ -6,13 +6,14 @@ Main Priorities:
 - Implement data change function in the Archtype Schema and Scraper
 - Clear Unnecessary Styling for right now
 + Finish Formatting of Pages and Make them Responsive
-+ Set Up Format Info, Contact Page, Donation Page, and Link to Github (Twilio, Donation Functionality)
++ Set Up Contact Page, Donation Page, and Link to Github (Twilio, Donation Functionality)
 + Write the About Me Page
 + How to deal with gaps in data, Decks be out of the meta, etc.
 + Sort and Filter Data So what is displayed on the Format Page is the top the 30 archetypes sorted by Meta %
 
 Debugging Priorities:
 - Some Archetypes Have the Same Name
+- Mono-Green Tron's Data is Messed Up
 
 Going Live:
 + Heroku Setup
