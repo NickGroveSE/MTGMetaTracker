@@ -1,3 +1,7 @@
+if(process.env.NODE_ENV !== 'production' ) {
+    require('dotenv').config()
+}
+
 const express = require('express')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
@@ -21,11 +25,13 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 // MongoDB Setup
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://0.0.0.0:27017/mtgmetatracker', { useNewUrlParser: true })
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
 const db = mongoose.connection
 db.on('error', error => console.error(error))
 db.once('open', () => console.log("Database Connected"))
 
+
+// 'mongodb://0.0.0.0:27017/mtgmetatracker'
 // Router Setup
 app.use('/', indexRouter)
 app.use('/about', aboutRouter)
