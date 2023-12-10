@@ -301,6 +301,10 @@ header {
     vertical-align: top;
 }
 
+.stat-change[change="-"] {
+    color: red;
+}
+
 #meta-stat {
     width: 65px;
 }

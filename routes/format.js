@@ -6,7 +6,7 @@ const Archetype = require('../models/archetype')
 router.get('/:format', async (req,res) =>{
     const formatUpper = req.params.format.charAt(0).toUpperCase() + req.params.format.slice(1)
     try {
-        const archetypes = await Archetype.find({format: formatUpper}).sort({"data[data.length-1].meta": -1})
+        const archetypes = await Archetype.find({format: formatUpper}).sort({"data.meta": -1})
 
         res.render(`format/${req.params.format}`, {archetypes: archetypes.slice(0,30)})
     } catch (err) {

@@ -39,8 +39,9 @@ if (currently == "live") {
     const job = node_cron.schedule(" 0 0 0 * * Monday", () => {
         scraper.scrape()
     });
-} else if (currently == "scrapetest") {
-    scraper.scrape()
 } 
+// else if (currently == "scrapetest") {
+//     scraper.scrape()
+// } 
 
 app.listen(process.env.PORT || 3000)
