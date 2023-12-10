@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "parserTesting": "node utilities/parser.js",
+    "parserTesting": "node utilities/scraper.js",
+    "build": "webpack",
+    "prod": "node dist/final.js",
     "start": "node server.js",
     "devStart": "nodemon server.js"
   },
